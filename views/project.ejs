@@ -5,8 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <style>
+            table, th, td {
+                border: 1px solid black;
+                border-collapse: collapse;
+            }
+            </style>
 </head>
 <body>
     <h1>Project</h1>
+    <table style="width:50%">
+        <thead>
+        <tr>
+          <th>Id</th>
+          <th>Name</th>
+          <th colspan="2">Options</th>
+        </tr>
+    </thead>
+    <tbody>
+        <%dataProjects.forEach(function(showProjects){%>
+            <tr>
+                <td><%=showProjects.id%></td>
+                <td><%=showProjects.name%></td>
+                <td><a href="project/edit/<%=showProjects.id%>">Edit</a></td>
+                <td><a href="project/delete/<%=showProjects.id%>">Delete</a></td>
+              </tr>
+       <% })%>
+    </tbody>
+      </table> 
 </body>
 </html>

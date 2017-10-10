@@ -29,13 +29,14 @@ router.post('/add', (req, res)=>{
   })
 })
 
-router.get('edit/:id', (req, res)=>{
+router.get('/edit/:id', (req, res)=>{
+  // console.log('==============',req.params.id)
   model.Project.findById(req.params.id).then(editProject=>{
     res.render('editProject', {editProject:editProject});
   })
 })
 
-router.post('edit/:id', (req, res)=>{
+router.post('/edit/:id', (req, res)=>{
   model.Project.update(
     {
       name: req.body.name
@@ -43,10 +44,13 @@ router.post('edit/:id', (req, res)=>{
       where: {
         id: req.params.id
       }
+    }).then(()=>{
+      res.redirect('/project')
     })
 })
 
-router.get('delete/:id', (res, req)=>{
+router.get('/delete/:id', (req, res)=>{
+  // console.log(req.params.id)
   model.Project.destroy(
     {
       where: {
@@ -54,7 +58,7 @@ router.get('delete/:id', (res, req)=>{
       }
     })
     .then(()=>{
-      res.redirect('/projects');
+      res.redirect('/project');
     })
 })
 

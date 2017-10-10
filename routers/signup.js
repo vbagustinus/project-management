@@ -16,5 +16,24 @@ router.get('/', function (req, res) {
   res.render('signup')
 })
 
+router.post('/', (req, res)=>{
+  let secret = randomAlphanumeric(8);
+  // console.log('Kunci==',secret);
+  let nakedPassword = req.body.password;
+  // console.log(nakedPassword)
+  const password = crypto.createHmac('sha256', secret)
+                         .update(nakedPassword)
+                         .digest('hex');
+  model.User.create(
+    {
+      username: req.body.username,
+      password: password,
+      role: req.body.role,
+      salt: secret
+    }).then(()=>{
+      res.redirect('/login')
+    })
+})
+
 
 module.exports = router;
