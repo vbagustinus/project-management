@@ -15,18 +15,18 @@
   <br>
   <section class="container">
     <div class="container">
-      <form class="" action="#" method="post">
+      <form class="" action="<%=editUser.id%>" method="post">
         <div class="field">
           <label class="label">Name</label>
           <div class="control">
-            <input name="name" class="input" type="text" placeholder="Text input">
+            <input name="name" value="<%=editUser.name%>" class="input" type="text" placeholder="Text input">
           </div>
         </div>
 
         <div class="field">
           <label class="label">Username</label>
           <div class="control has-icons-left has-icons-right">
-            <input name="username" class="input is-success" type="text" placeholder="Username input" value="">
+            <input name="username" class="input is-success" type="text" placeholder="Username input" value="<%=editUser.username%>">
             <span class="icon is-small is-left">
         <i class="fa fa-user"></i>
       </span>

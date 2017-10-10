@@ -14,18 +14,20 @@
         <tr>
           <th>Id</th>
           <th>Name</th>
-          <th>Detail</th>
+          <th>Username</th>
+          <th>Role</th>
           <th colspan="2">Actions</th>
         </tr>
       </thead>
       <tbody>
-        <%dataProjects.forEach(function(showProjects){%>
+        <%dataUsers.forEach(function(showUsers){%>
             <tr>
-                <td><%=showProjects.id%></td>
-                <td><%=showProjects.name%></td>
-                <td><a href="project/detail/<%=showProjects.id%>">Details</a></td>
-                <td><a href="project/edit/<%=showProjects.id%>">Edit</a></td>
-                <td><a href="project/delete/<%=showProjects.id%>">Delete</a></td>
+                <td><%=showUsers.id%></td>
+                <td><%=showUsers.name%></td>
+                <td><%=showUsers.username%></td>
+                <td><%=showUsers.role%></td>
+                <td><a href="user/edit/<%=showUsers.id%>">Edit</a></td>
+                <td><a href="user/delete/<%=showUsers.id%>">Delete</a></td>
               </tr>
        <% })%>
     </table>
