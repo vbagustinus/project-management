@@ -8,13 +8,95 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.5.3/css/bulma.min.css">
 </head>
 <body>
+  <!-- NAVBAR -->
+    <nav class="navbar is-transparent">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="#">
+        Project Management Panel
+      </a>
+      <div class="navbar-burger burger" data-target="navMenuTransparentExample">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+    <div id="navMenuTransparentExample" class="navbar-menu">
+      <div class="navbar-start">
+        <div class="navbar-item">
+          <a class="navbar-item" href="/">
+            Home
+          </a>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link " href="/project">
+            Project
+          </a>
+          <div id="blogDropdown" class="navbar-dropdown is-boxed" data-style="width: 18rem;">
+              <a class="navbar-item" href="/project/add">
+                <div class="navbar-content">
+                  <p>
+                    Add Project
+                  </p>
+                </div>
+              </a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <div class="navbar-link">
+            User
+          </div>
+          <div id="moreDropdown" class="navbar-dropdown is-boxed">
+            <a class="navbar-item " href="#">
+              <div class="navbar-content">
+                <p>
+                  Add User
+                </p>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <div class="field is-grouped">
+            <p class="control">
+              <a class="button is-primary" href="https://github.com/jgthms/bulma/archive/0.5.3.zip">
+                <span>Log In</span>
+              </a>
+            </p>
+            <p class="control">
+              <a class="button is-primary" href="https://github.com/jgthms/bulma/archive/0.5.3.zip">
+                <span>Log Out</span>
+              </a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <!-- NAVBAR END -->
+  <!-- HERO SECTION -->
+  <section class="hero is-primary">
+    <div class="hero-body">
+      <div class="container">
+        <h1 class="title">
+          Projects
+        </h1>
+        <h2 class="subtitle">
+          All projects are here
+        </h2>
+      </div>
+    </div>
+  </section>
+  <!-- HERO SECTION END -->
+  <!-- SECTION START -->
   <div class="container-fluid">
     <table class="table is-fullwidth">
       <thead>
         <tr>
           <th>Id</th>
           <th>Name</th>
-          <th colspan="2">Options</th>
+          <th colspan="4">Options</th>
         </tr>
       </thead>
       <tbody>
@@ -22,12 +104,32 @@
             <tr>
                 <td><%=showProjects.id%></td>
                 <td><%=showProjects.name%></td>
+                <td><a href="project/add">Create New</a></td>
                 <td><a href="project/edit/<%=showProjects.id%>">Edit</a></td>
                 <td><a href="project/delete/<%=showProjects.id%>">Delete</a></td>
+                <td><a href="user_task_detail">Details</a></td>
               </tr>
        <% })%>
     </table>
   </div>
-
+  <!-- FOOTER START -->
+  <br>
+  <br>
+  <footer class="footer">
+    <div class="container">
+      <div class="content has-text-centered">
+        <p>
+          <strong>Project Management Panel</strong> by Agustinus and Albert. The source code is licensed
+          at Hacktiv8.
+        </p>
+        <p>
+          <a class="icon" href="https://github.com/jgthms/bulma">
+          <i class="fa fa-github"></i>
+        </a>
+        </p>
+      </div>
+    </div>
+  </footer>
+  <!-- FOOTER END -->
 </body>
 </html>
