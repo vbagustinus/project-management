@@ -22,32 +22,34 @@ router.post('/', (req, res)=>{
   model.Detail.create({
     task: req.body.task,
     status: req.body.status,
-    User_SubjectId: req.body.name
+    User_ProjectId: req.body.name
   }).then(()=>{
     res.redirect('/user_task_detail')
   })
 })
 
-router.get('edit/:id', (req, res)=>{
-  model.Detail.findById(req.params.id).then(editDetail=>{
-    res.render('editDetail', {editDetail:editDetail});
+router.get('/edit/:id', (req, res)=>{
+  model.Detail.findById(req.params.id).then(editUserTask=>{
+    res.render('editUserTask', {editUserTask:editUserTask});
   })
 })
 
-router.post('edit/:id', (req, res)=>{
+router.post('/edit/:id', (req, res)=>{
   model.Detail.update(
     {
       task: req.body.task,
       status: req.body.status,
-      User_SubjectId: req.body.name
+      User_ProjectId: req.body.name
     }, {
       where: {
         id: req.params.id
       }
+    }).then(()=>{
+      res.redirect('/user_task_detail')
     })
 })
 
-router.get('delete/:id', (req, res)=>{
+router.get('/delete/:id', (req, res)=>{
   model.Detail.destroy(
     {
       where: {

@@ -8,5 +8,41 @@
 </head>
 <body>
     <h1>Detail</h1>
+    <table style="width:50%">
+            <thead>
+            <tr>
+              <th>Id</th>
+              <th>Task</th>
+              <th>Status</th>
+              <th>Apalah</th>
+              <th colspan="2">Options</th>
+            </tr>
+        </thead>
+        <tbody>
+            <%dataDetail.forEach(function(showDetail){%>
+                <tr>
+                    <td><%=showDetail.id%></td>
+                    <td><%=showDetail.task%></td>
+                    <td><%=showDetail.status%></td>
+                    <td><%=showDetail.User_ProjectId%></td>
+                    <td><a href="user_task_detail/edit/<%=showDetail.id%>">Edit</a></td>
+                    <td><a href="user_task_detail/delete/<%=showDetail.id%>">Delete</a></td>
+                  </tr>
+           <% })%>
+        </tbody>
+          </table> 
+
+          <form action="/user_task_detail" method="post">
+                Task:<br>
+                <input type="text" name="task">
+                <br><br>
+                Status
+                <input type="text" name="status">
+                <br><br>
+                User_ProjectId
+                <input type="text" name="name">
+                <br><br>
+                <input type="submit" value="Submit">
+         </form> 
 </body>
 </html>
