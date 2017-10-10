@@ -2,7 +2,6 @@ var express = require('express')
 var router = express.Router()
 let model = require('../models')
 const crypto = require('crypto');
-let randomAlphanumeric =  require('../helper/randomSecret')
 // define the home page route
 
 // router.use(function(req,res,next) {
@@ -14,7 +13,6 @@ let randomAlphanumeric =  require('../helper/randomSecret')
 // })
 
 router.get('/', function (req, res) {
-
   res.render('signup')
 })
 

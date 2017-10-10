@@ -14,7 +14,7 @@ const crypto = require('crypto');
 // })
 
 router.get('/', function (req, res) {
-  res.render('login', {msgError: ''})
+  res.render('login')
 })
 
 // router.post('/',(req, res)=>{

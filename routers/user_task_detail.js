@@ -1,7 +1,6 @@
 var express = require('express')
 var router = express.Router()
 let model = require('../models')
-let scoreLetter =  require('../helper/scoreLetter')
 
 // router.use(function(req, res, next) {
 //   if(req.session.hasOwnProperty('username')){
@@ -12,9 +11,7 @@ let scoreLetter =  require('../helper/scoreLetter')
 // })
 // define the home page route
 router.get('/', function (req, res) {
-  model.Subject.findAll().then(()=>{
     res.render('user_task_detail')
-  })
 })
 
 
