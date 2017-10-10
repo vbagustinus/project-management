@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Project Management App</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.5.3/css/bulma.min.css">
+</head>
+<body>
+  <div class="container-fluid">
+    <table class="table is-fullwidth">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Name</th>
+          <th>Username</th>
+          <th>Role</th>
+          <th colspan="2">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <%dataUsers.forEach(function(showUsers){%>
+            <tr>
+                <td><%=showUsers.id%></td>
+                <td><%=showUsers.name%></td>
+                <td><%=showUsers.username%></td>
+                <td><%=showUsers.role%></td>
+                <td><a href="user/edit/<%=showUsers.id%>">Edit</a></td>
+                <td><a href="user/delete/<%=showUsers.id%>">Delete</a></td>
+              </tr>
+       <% })%>
+    </table>
+  </div>
+
+</body>
+</html>
