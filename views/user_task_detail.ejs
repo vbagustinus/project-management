@@ -1,48 +1,190 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Project Management App</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.5.3/css/bulma.min.css">
+  <title>Detail</title>
 </head>
 <body>
-    <h1>Detail</h1>
-    <table style="width:50%">
-            <thead>
+  <!-- NAVBAR -->
+    <nav class="navbar is-transparent">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="#">
+        Project Management Panel
+      </a>
+      <div class="navbar-burger burger" data-target="navMenuTransparentExample">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+    <div id="navMenuTransparentExample" class="navbar-menu">
+      <div class="navbar-start">
+        <div class="navbar-item">
+          <a class="navbar-item" href="/">
+            Home
+          </a>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link " href="/project">
+            Project
+          </a>
+          <div id="blogDropdown" class="navbar-dropdown is-boxed" data-style="width: 18rem;">
+              <a class="navbar-item" href="/project/add">
+                <div class="navbar-content">
+                  <p>
+                    Add Project
+                  </p>
+                </div>
+              </a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <div class="navbar-link">
+            User
+          </div>
+          <div id="moreDropdown" class="navbar-dropdown is-boxed">
+            <a class="navbar-item " href="#">
+              <div class="navbar-content">
+                <p>
+                  Add User
+                </p>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <div class="field is-grouped">
+            <p class="control">
+              <a class="button is-primary" href="https://github.com/jgthms/bulma/archive/0.5.3.zip">
+                <span>Log In</span>
+              </a>
+            </p>
+            <p class="control">
+              <a class="button is-primary" href="https://github.com/jgthms/bulma/archive/0.5.3.zip">
+                <span>Log Out</span>
+              </a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <!-- NAVBAR END -->
+  <!-- HERO SECTION -->
+  <section class="hero is-primary">
+    <div class="hero-body">
+      <div class="container">
+        <h1 class="title">
+          Projects Detail
+        </h1>
+        <h2 class="subtitle">
+          All projects detail are here
+        </h2>
+      </div>
+    </div>
+  </section>
+  <!-- HERO SECTION END -->
+  <!-- SECTION START -->
+  <br>
+  <br>
+  <div class="container">
+    <table class="table is-fullwidth">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Task</th>
+          <th>Employee Assigned</th>
+          <th>Status</th>
+          <th>Apalah</th>
+          <th colspan="2">Options</th>
+        </tr>
+      </thead>
+      <tbody>
+        <%dataDetail.forEach(function(showDetail){%>
             <tr>
-              <th>Id</th>
-              <th>Task</th>
-              <th>Status</th>
-              <th>Apalah</th>
-              <th colspan="2">Options</th>
-            </tr>
-        </thead>
-        <tbody>
-            <%dataDetail.forEach(function(showDetail){%>
-                <tr>
-                    <td><%=showDetail.id%></td>
-                    <td><%=showDetail.task%></td>
-                    <td><%=showDetail.status%></td>
-                    <td><%=showDetail.User_ProjectId%></td>
-                    <td><a href="user_task_detail/edit/<%=showDetail.id%>">Edit</a></td>
-                    <td><a href="user_task_detail/delete/<%=showDetail.id%>">Delete</a></td>
-                  </tr>
-           <% })%>
-        </tbody>
-          </table> 
+              <td><%=showDetail.id%></td>
+              <td><%=showDetail.task%></td>
+              <td>Employee Name</td>
+              <td><%=showDetail.status%></td>
+              <td><%=showDetail.User_ProjectId%></td>
+              <td><a href="user_task_detail/edit/<%=showDetail.id%>">Edit</a></td>
+              <td><a href="user_task_detail/delete/<%=showDetail.id%>">Delete</a></td>
+              </tr>
+       <% })%>
+    </table>
+  </div>
+  <!-- FORM START -->
+  <br>
+  <br>
+  <section class="container">
+    <div class="container">
+      <form class="" action="/user_task_detail" method="post">
+        <div class="field">
+          <label class="label">Task:</label>
+          <div class="control">
+            <input name="task" class="input" type="text" placeholder="Text input">
+          </div>
+        </div>
 
-          <form action="/user_task_detail" method="post">
-                Task:<br>
-                <input type="text" name="task">
-                <br><br>
-                Status
-                <input type="text" name="status">
-                <br><br>
-                User_ProjectId
-                <input type="text" name="name">
-                <br><br>
-                <input type="submit" value="Submit">
-         </form> 
+        <div class="field">
+          <label class="label">Employee Assigned:</label>
+          <div class="control">
+            <div class="select">
+              <select name="#">
+          <option value="#">Employee A</option>
+          <option value="#">Employee B</option>
+        </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label">Status:</label>
+          <div class="control">
+            <div class="select">
+              <select name="#">
+          <option value="pending">Pending</option>
+          <option value="inProgress">In Progress</option>
+          <option value="done">Done</option>
+        </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="field is-grouped">
+          <div class="control">
+            <button class="button is-primary">Submit</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </section>
+  <!-- FORM END -->
+  <!-- SECTION END -->
+  <!-- FOOTER START -->
+  <br>
+  <br>
+  <footer class="footer">
+    <div class="container">
+      <div class="content has-text-centered">
+        <p>
+          <strong>Project Management Panel</strong> by Agustinus and Albert. The source code is licensed
+          at Hacktiv8.
+        </p>
+        <p>
+          <a class="icon" href="https://github.com/jgthms/bulma">
+          <i class="fa fa-github"></i>
+        </a>
+        </p>
+      </div>
+    </div>
+  </footer>
+  <!-- FOOTER END -->
 </body>
 </html>
