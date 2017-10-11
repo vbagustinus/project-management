@@ -102,12 +102,6 @@ router.get('/detail/:id', (req, res)=>{
       }
     )
     .then(detailProject=>{
-      // res.render('user_task_detail', 
-      //   {
-      //     detailProject:detailProject,
-      //     dataProject:dataProject
-      //   });
-      // res.send(detailProject);
       model.User_Project.findAll(
         {
           include:['User']
@@ -136,4 +130,55 @@ router.post('/detail/:id', (req, res)=>{
       res.redirect(`/project/detail/${id}`)
     })
 })
+
+router.get('/detail/:idProject/edit/:idDetail',(req, res)=>{
+  model.Detail.findById(req.params.idDetail)
+    .then(editDetail=>{
+      model.User.findAll({
+        where:{
+          role: 'employee'
+        }
+      })
+      .then(dataEmployes =>{
+        model.Project.findById(req.params.idProject)
+        .then(dataProject=>{
+          res.render('editDetail',
+          {
+            editDetail:editDetail,
+            dataEmployes:dataEmployes,
+            dataProject:dataProject
+          })
+        })
+      })
+    })
+})
+
+router.post('/detail/:idProject/edit/:idDetail', (req, res)=>{
+  model.Detail.update(
+    {
+      task: req.body.task,
+      status: req.body.status,
+      UserId: req.body.UserId
+    },{
+      where:{
+        id: req.params.idDetail
+      }
+    }).then(()=>{
+      var id = req.params.idProject
+      res.redirect(`/project/detail/${id}`)
+    })
+})
+
+router.get('/detail/:idProject/delete/:idDetail', (req, res)=>{
+  model.Detail.destroy(
+    {
+      where:{
+        id: req.params.idDetail
+      }
+    }).then(()=>{
+      var id = req.params.idProject
+      res.redirect(`/project/detail/${id}`)
+    })
+})
+
 module.exports=router;

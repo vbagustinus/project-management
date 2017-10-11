@@ -45,8 +45,8 @@
               <td>Unassigned</td>  
               <%}%>
               <td><%=showDetail.status%></td>
-              <td><a href="edit/<%=showDetail.id%>">Edit</a></td>
-              <td><a href="delete/<%=showDetail.id%>">Delete</a></td>
+              <td><a href="<%=dataProject.id%>/edit/<%=showDetail.id%>">Edit</a></td>
+              <td><a href="<%=dataProject.id%>/delete/<%=showDetail.id%>">Delete</a></td>
               </tr>
        <% })%>
     </table>
