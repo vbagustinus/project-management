@@ -52,8 +52,13 @@
           <div class="control">
             <div class="select">
               <select name="role">
-                <option value="employee">Employee</option>
-                <option value="manager">Manager</option>
+                <%if(editUser.role==='manager'){%>
+                  <option value="employee">Employee</option>
+                  <option selected value="manager">Manager</option>
+                <%} else if(editUser.role==='employee'){%>
+                  <option selected value="employee">Employee</option>
+                  <option value="manager">Manager</option>
+                <%}%>
               </select>
             </div>
           </div>

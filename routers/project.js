@@ -107,7 +107,7 @@ router.get('/detail/:id', (req, res)=>{
           include:['User']
         })
           .then(dataEmployes=>{
-            // res.send(detailProject)
+            // res.send(dataEmployes)
             res.render('user_task_detail', 
             {
               detailProject:detailProject,

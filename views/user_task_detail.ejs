@@ -70,11 +70,14 @@
           <div class="control">
             <div class="select">
                 <select name="UserId">
-                  <%dataEmployes.forEach(listEmployes=>{%>
-                    <option value='<%=listEmployes.User.id %>'>
-                      <%=listEmployes.User.name %>
+                  <%dataEmployes.forEach(listEmployes=>{
+                    if(listEmployes.User){%>
+                    
+                    <option value='<%=listEmployes.User.id%>'>
+
+                      <%=listEmployes.User.name%>
                     </option>
-                  <%}, this)%>
+                  <%}})%>
               </select>
             </div>
           </div>
