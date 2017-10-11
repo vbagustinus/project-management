@@ -62,4 +62,29 @@ router.get('/delete/:id', (req, res)=>{
     })
 })
 
+router.get('/detail/:id', (req, res)=>{
+  // console.log('==============',req.params.id)
+  model.Project.findById(req.params.id).then(dataProject=>{
+    model.Detail.findAll().then(detailProject=>{
+      model.User.findAll(
+        {
+          where: {
+            role: 'employee'
+          }
+        }).then(dataEmployes=>{
+          // console.log(dataEmployes)
+          res.render('user_task_detail', 
+          {
+            detailProject:detailProject,
+            dataProject:dataProject,
+            dataEmployes:dataEmployes
+          });
+        })
+    })
+  })
+})
+
+router.post('/detail/:id', (req, res)=>{
+  console.log('Prosses')
+})
 module.exports=router;

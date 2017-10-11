@@ -81,7 +81,7 @@
     <div class="hero-body">
       <div class="container">
         <h1 class="title">
-          Projects Detail
+          Projects Detail <%=dataProject.name%>
         </h1>
         <h2 class="subtitle">
           All projects detail are here
@@ -106,7 +106,7 @@
         </tr>
       </thead>
       <tbody>
-        <%dataDetail.forEach(function(showDetail){%>
+        <%detailProject.forEach(function(showDetail){%>
             <tr>
               <td><%=showDetail.id%></td>
               <td><%=showDetail.task%></td>
@@ -124,7 +124,7 @@
   <br>
   <section class="container">
     <div class="container">
-      <form class="" action="/user_task_detail" method="post">
+      <form class="" action="<%=dataProject.id%>" method="post">
         <div class="field">
           <label class="label">Task:</label>
           <div class="control">
@@ -136,10 +136,13 @@
           <label class="label">Employee Assigned:</label>
           <div class="control">
             <div class="select">
-              <select name="#">
-          <option value="#">Employee A</option>
-          <option value="#">Employee B</option>
-        </select>
+                <select name="UserId">
+                  <%dataEmployes.forEach((listEmployes)=>{%>
+                    <option value='<%= listEmployes.id %>'>
+                      <%= listEmployes.name %>
+                    </option>
+                  <%}, this)%>
+              </select>
             </div>
           </div>
         </div>
@@ -148,11 +151,11 @@
           <label class="label">Status:</label>
           <div class="control">
             <div class="select">
-              <select name="#">
-          <option value="pending">Pending</option>
-          <option value="inProgress">In Progress</option>
-          <option value="done">Done</option>
-        </select>
+              <select name="status">
+                  <option value="inprogress">In Progress</option>
+                  <option value="pending">Pending</option>
+                  <option value="done">Done</option>
+              </select>
             </div>
           </div>
         </div>
