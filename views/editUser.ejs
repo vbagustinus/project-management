@@ -1,15 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Project Management App</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.5.3/css/bulma.min.css">
+  <%- include('./partials/head')%>
 </head>
 
 <body>
+  <%- include('./partials/header')%>
   <!-- SECTION START -->
   <br>
   <br>
@@ -72,24 +68,6 @@
     </div>
   </section>
   <!-- SECTION END -->
-  <!-- FOOTER START -->
-  <br>
-  <br>
-  <footer class="footer">
-    <div class="container">
-      <div class="content has-text-centered">
-        <p>
-          <strong>Project Management Panel</strong> by Agustinus and Albert. The source code is licensed
-          at Hacktiv8.
-        </p>
-        <p>
-          <a class="icon" href="https://github.com/jgthms/bulma">
-          <i class="fa fa-github"></i>
-        </a>
-        </p>
-      </div>
-    </div>
-  </footer>
-  <!-- FOOTER END -->
+  <%- include('./partials/footer')%>
 </body>
 </html>

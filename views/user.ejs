@@ -1,14 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Project Management App</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.5.3/css/bulma.min.css">
+  <%- include('./partials/head')%>
+  <title>Users</title>
 </head>
 <body>
-  <div class="container-fluid">
+  <%- include('./partials/header')%>
+  <!-- HERO SECTION -->
+  <section class="hero is-primary">
+    <div class="hero-body">
+      <div class="container">
+        <h1 class="title">
+          Users
+        </h1>
+        <h2 class="subtitle">
+          All users are here
+        </h2>
+      </div>
+    </div>
+  </section>
+  <!-- HERO SECTION END -->
+  <!-- SECTION START -->
+  <br><br>
+  <div class="container">
     <table class="table is-fullwidth">
       <thead>
         <tr>
@@ -22,16 +36,16 @@
       <tbody>
         <%dataUsers.forEach(function(showUsers){%>
             <tr>
-                <td><%=showUsers.id%></td>
-                <td><%=showUsers.name%></td>
-                <td><%=showUsers.username%></td>
-                <td><%=showUsers.role%></td>
-                <td><a href="user/edit/<%=showUsers.id%>">Edit</a></td>
-                <td><a href="user/delete/<%=showUsers.id%>">Delete</a></td>
+              <td><%=showUsers.id%></td>
+              <td><%=showUsers.name%></td>
+              <td><%=showUsers.username%></td>
+              <td><%=showUsers.role%></td>
+              <td><a href="user/edit/<%=showUsers.id%>">Edit</a></td>
+              <td><a href="user/delete/<%=showUsers.id%>">Delete</a></td>
               </tr>
        <% })%>
     </table>
   </div>
-
+  <%- include('./partials/footer')%>
 </body>
 </html>
