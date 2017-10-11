@@ -44,9 +44,19 @@
                       <div class="control">
                         <div class="select">
                           <select name="status">
-                              <option value="inprogress">In Progress</option>
-                              <option value="pending">Pending</option>
-                              <option value="done">Done</option>
+                              <%if(editDetail.status=='inprogress'){%>
+                                    <option selected value="inprogress">In Progress</option>
+                                    <option value="pending">Pending</option>
+                                    <option value="done">Done</option>
+                                <%} else if(editDetail.status=='pending'){%>
+                                    <option value="inprogress">In Progress</option>
+                                    <option selected value="pending">Pending</option>
+                                    <option value="done">Done</option>
+                                <%}else if(editDetail.status=='done'){%>
+                                    <option value="inprogress">In Progress</option>
+                                    <option value="pending">Pending</option>
+                                    <option selected value="done">Done</option>
+                                <%}%>
                           </select>
                         </div>
                       </div>
