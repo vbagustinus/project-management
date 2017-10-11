@@ -10,12 +10,12 @@ module.exports = (sequelize, DataTypes) => {
     }
   });
   Project.associate = model =>{
-    Project.hasMany(model.User_Project ,{as: 'ProjectId'})
-    Project.belongsToMany(model.User,
-    {
-      through: 'User_Projects',
-      foreignKey: 'ProjectId'
-    })
+    Project.hasMany(model.Project_Detail, {as: 'ProjectId'})
+    Project.belongsToMany(model.Detail,
+      {
+        through: 'Project_Details',
+        foreignKey: 'ProjectId'
+      })
   }
   return Project;
 };
