@@ -2,41 +2,27 @@
 <html lang="en">
 <head>
   <%- include('./partials/head')%>
-  <title>Signup Page</title>
 </head>
+
 <body>
   <%- include('./partials/header')%>
-  <!-- HERO SECTION -->
-  <section class="hero is-primary">
-    <div class="hero-body">
-      <div class="container">
-        <h1 class="title">
-          Signup
-        </h1>
-        <h2 class="subtitle">
-          Please input your data
-        </h2>
-      </div>
-    </div>
-  </section>
-  <!-- HERO SECTION END -->
   <!-- SECTION START -->
   <br>
   <br>
   <section class="container">
     <div class="container">
-      <form class="" action="#" method="post">
+      <form class="" action="<%=editUser.id%>" method="post">
         <div class="field">
           <label class="label">Name</label>
           <div class="control">
-            <input name="name" class="input" type="text" placeholder="Text input">
+            <input name="name" value="<%=editUser.name%>" class="input" type="text" placeholder="Text input">
           </div>
         </div>
 
         <div class="field">
           <label class="label">Username</label>
           <div class="control has-icons-left has-icons-right">
-            <input name="username" class="input is-success" type="text" placeholder="Username input" value="">
+            <input name="username" class="input is-success" type="text" placeholder="Username input" value="<%=editUser.username%>">
             <span class="icon is-small is-left">
         <i class="fa fa-user"></i>
       </span>

@@ -1,93 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Project Management App</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.5.3/css/bulma.min.css">
+  <%- include('./partials/head')%>
 </head>
 <body>
-<!-- NAVBAR -->
-  <nav class="navbar is-transparent">
-  <div class="navbar-brand">
-    <a class="navbar-item" href="#">
-      Project Management Panel
-    </a>
-    <div class="navbar-burger burger" data-target="navMenuTransparentExample">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-  </div>
-  <div id="navMenuTransparentExample" class="navbar-menu">
-    <div class="navbar-start">
-      <div class="navbar-item">
-        <a class="navbar-item" href="/">
-          Home
-        </a>
-      </div>
-      <div class="navbar-item has-dropdown is-hoverable">
-        <a class="navbar-link " href="/project">
-          Project
-        </a>
-        <div id="blogDropdown" class="navbar-dropdown is-boxed" data-style="width: 18rem;">
-            <a class="navbar-item" href="/project/add">
-              <div class="navbar-content">
-                <p>
-                  Add Project
-                </p>
-              </div>
-            </a>
-        </div>
-      </div>
-      <div class="navbar-item has-dropdown is-hoverable">
-        <div class="navbar-link">
-          User
-        </div>
-        <div id="moreDropdown" class="navbar-dropdown is-boxed">
-          <a class="navbar-item " href="#">
-            <div class="navbar-content">
-              <p>
-                Add User
-              </p>
-            </div>
-          </a>
-        </div>
-      </div>
-    </div>
-    <div class="navbar-end">
-      <div class="navbar-item">
-        <div class="field is-grouped">
-          <p class="control">
-            <a class="button is-primary" href="https://github.com/jgthms/bulma/archive/0.5.3.zip">
-              <span>Log In</span>
-            </a>
-          </p>
-          <p class="control">
-            <a class="button is-primary" href="https://github.com/jgthms/bulma/archive/0.5.3.zip">
-              <span>Log Out</span>
-            </a>
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-</nav>
-<!-- NAVBAR END -->
+<%- include('./partials/header')%>
 <!-- HERO SECTION -->
-<section class="hero is-primary">
-  <div class="hero-body">
-    <div class="container">
-      <h1 class="title">
-        Hello
-      </h1>
-      <h2 class="subtitle">
-        Welcome to Project Management Panel!
-      </h2>
+<div class="container-fluid">
+  <section class="hero is-primary">
+    <div class="hero-body">
+      <div class="container">
+        <h1 class="title">
+          Hello
+        </h1>
+        <h2 class="subtitle">
+          Welcome to Project Management Panel!
+        </h2>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
+</div>
 <!-- HERO SECTION END -->
+<%- include('./partials/footer')%>
 </body>
 </html>

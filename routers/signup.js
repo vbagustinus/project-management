@@ -2,6 +2,7 @@ var express = require('express')
 var router = express.Router()
 let model = require('../models')
 const crypto = require('crypto');
+let randomAlphanumeric =  require('../helper/randomNumber')
 // define the home page route
 
 // router.use(function(req,res,next) {
@@ -26,6 +27,7 @@ router.post('/', (req, res)=>{
                          .digest('hex');
   model.User.create(
     {
+      name: req.body.name,
       username: req.body.username,
       password: password,
       role: req.body.role,
