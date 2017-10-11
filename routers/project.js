@@ -23,7 +23,8 @@ router.get('/add', (req, res)=>{
 
 router.post('/add', (req, res)=>{
   model.Project.create({
-    name: req.body.name
+    name: req.body.name,
+    deadline: req.body.deadline
   }).then(()=>{
     res.redirect('/project')
   })
@@ -39,7 +40,8 @@ router.get('/edit/:id', (req, res)=>{
 router.post('/edit/:id', (req, res)=>{
   model.Project.update(
     {
-      name: req.body.name
+      name: req.body.name,
+      deadline: req.body.deadline
     }, {
       where: {
         id: req.params.id
@@ -62,72 +64,84 @@ router.get('/delete/:id', (req, res)=>{
     })
 })
 
-router.get('/:id/addemployee', (req, res)=>{
-  model.Project.findById(req.params.id)
-    .then(dataProject=>{
-      model.User.findAll({
-        where:{
-          role: 'employee'
-        }
-      })
-      .then(dataEmployes =>{
-        res.render('addEmployee',
-        {
-          dataProject:dataProject,
-          dataEmployes:dataEmployes
-          })
-      })
-    })
-})
+// router.get('/:id/addemployee', (req, res)=>{
+//   model.Project.findById(req.params.id)
+//     .then(dataProject=>{
+//       model.User.findAll({
+//         where:{
+//           role: 'employee'
+//         }
+//       })
+//       .then(dataEmployes =>{
+//         res.render('addEmployee',
+//         {
+//           dataProject:dataProject,
+//           dataEmployes:dataEmployes
+//           })
+//       })
+//     })
+// })
 
-router.post('/:id/addemployee',(req, res)=>{
-  // console.log(req.params.id,'---------------',req.body.UserId)
-   model.User_Project.create(
-    {
-      ProjectId: req.params.id,
-      UserId: req.body.UserId
-    })
-      .then(()=>{
-        res.redirect('/project');
-      })
-})
+// router.post('/:id/addemployee',(req, res)=>{
+//   // console.log(req.params.id,'---------------',req.body.UserId)
+//    model.User_Project.create(
+//     {
+//       ProjectId: req.params.id,
+//       UserId: req.body.UserId
+//     })
+//       .then(()=>{
+//         res.redirect('/project');
+//       })
+// })
 
 router.get('/detail/:id', (req, res)=>{
   // console.log('==============',req.params.id)
   model.Project.findById(req.params.id)
-  .then(dataProject=>{
-    model.Detail.findAll(
-      {
-        include:['User']
-      }
-    )
-    .then(detailProject=>{
-      model.User_Project.findAll(
+    .then(namaProject=>{
+    model.Project_Detail.findAll(
+      { include: ['Detail'],
+        where:
         {
-          include:['User']
-        })
-          .then(dataEmployes=>{
-            // res.send(dataEmployes)
-            res.render('user_task_detail', 
-            {
-              detailProject:detailProject,
-              dataProject:dataProject,
-              dataEmployes:dataEmployes
-            });
-        })
-    })
+          ProjectId: req.params.id
+        }
+      })
+          .then(dataProject =>{
+            model.User.findAll(
+              {
+                where: {
+                  role: 'employee'
+                }
+              }).then(dataEmployes=>{
+                        // res.send(dataUser)
+             res.render('user_task_detail', 
+             {
+               dataProject:dataProject,
+               dataEmployes:dataEmployes,
+               namaProject:namaProject
+               })
+              })
+      })
   })
 })
-
-router.post('/detail/:id', (req, res)=>{
+ 
+router.post('/detail/:idProject/add', (req, res)=>{
+  // res.send(req.body.id)
   model.Detail.create(
     {
       task: req.body.task,
       status: req.body.status,
       UserId: req.body.UserId
-    }).then(()=>{
-      var id = req.params.id
-      res.redirect(`/project/detail/${id}`)
+    }).then((dataDetail)=>{
+      // console.log('=============',dataDetail)
+      model.Project_Detail.create(
+        {
+          DetailId: dataDetail.id,
+          ProjectId: req.params.idProject
+        })
+          .then(()=>{
+            var id = req.params.idProject
+            res.redirect(`/project/detail/${id}`)
+          })
     })
 })
 

@@ -3,7 +3,7 @@ module.exports = (sequelize, DataTypes) => {
   var Detail = sequelize.define('Detail', {
     task: DataTypes.STRING,
     status: DataTypes.STRING,
-    User_ProjectId: DataTypes.INTEGER,
+    deadline:DataTypes.DATE,
     UserId: DataTypes.INTEGER
   });
   Detail.associate = model =>{

@@ -11,6 +11,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   });
   User_Project.associate = model =>{
+    // User_Project.belongsTo(model.Detail);
     User_Project.belongsTo(model.User);
     User_Project.belongsTo(model.Project);
   }
