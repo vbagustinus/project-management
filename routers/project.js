@@ -96,8 +96,18 @@ router.get('/detail/:id', (req, res)=>{
   // console.log('==============',req.params.id)
   model.Project.findById(req.params.id)
   .then(dataProject=>{
-    model.Detail.findAll()
+    model.Detail.findAll(
+      {
+        include:['User']
+      }
+    )
     .then(detailProject=>{
+      // res.render('user_task_detail', 
+      //   {
+      //     detailProject:detailProject,
+      //     dataProject:dataProject
+      //   });
+      // res.send(detailProject);
       model.User_Project.findAll(
         {
           include:['User']
@@ -113,5 +123,17 @@ router.get('/detail/:id', (req, res)=>{
         })
     })
   })
+})
+
+router.post('/detail/:id', (req, res)=>{
+  model.Detail.create(
+    {
+      task: req.body.task,
+      status: req.body.status,
+      UserId: req.body.UserId
+    }).then(()=>{
+      var id = req.params.id
+      res.redirect(`/project/detail/${id}`)
+    })
 })
 module.exports=router;
