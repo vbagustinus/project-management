@@ -27,7 +27,7 @@
         <tr>
           <th>Id</th>
           <th>Name</th>
-
+          <th>Assign Employee</th>
           <th>Detail</th>
           <th colspan="2">Actions</th>
 
@@ -38,6 +38,7 @@
             <tr>
                 <td><%=showProjects.id%></td>
                 <td><%=showProjects.name%></td>
+                <td><a href="project/<%=showProjects.id%>/addemployee">Add Employee</a></td>
                 <td><a href="project/detail/<%=showProjects.id%>">Details</a></td>
                 <td><a href="project/edit/<%=showProjects.id%>">Edit</a></td>
                 <td><a href="project/delete/<%=showProjects.id%>">Delete</a></td>

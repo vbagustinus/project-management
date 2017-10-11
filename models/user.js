@@ -13,6 +13,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   });
   User.associate = (model) =>{
+    User.hasMany(model.Detail);
     User.hasMany(model.User_Project,{as: 'UserId'});
     User.belongsToMany(model.Project, 
       {

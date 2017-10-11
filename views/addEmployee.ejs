@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <section class="section">
+        <div class="container">
+          <h1 class="title">Add Employee to Project</h1>
+          <br/>
+          <br/>
+          <form action="/project/<%=dataProject.id%>/addemployee" method="post">
+            <div class="control">
+                <label class="label">Project</label>
+                <input class="input" type="text" placeholder="<%=dataProject.name%>" disabled>
+            </div>
+            <div class="field">
+                <label class="label">Choose Employee</label>
+                <div class="control">
+                  <div class="select">
+                    <select name="UserId">
+                          <%dataEmployes.forEach(listEmployes=>{%>
+                      <option value='<%=listEmployes.id %>'>
+                          <%=listEmployes.name %>
+                      </option>
+                      <%}, this)%>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            <br/><br/>
+            <input class="button is-primary is-outlined" type="submit" value="Kirim">
+    
+</body>
+</html>
