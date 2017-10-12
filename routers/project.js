@@ -112,7 +112,7 @@ router.get('/detail/:id', (req, res)=>{
                   role: 'employee'
                 }
               }).then(dataEmployes=>{
-                        // res.send(dataUser)
+                        // res.send(dataEmployes)
              res.render('user_task_detail', 
              {
                dataProject:dataProject,
@@ -156,12 +156,13 @@ router.get('/detail/:idProject/edit/:idDetail',(req, res)=>{
       .then(dataEmployes =>{
         model.Project.findById(req.params.idProject)
         .then(dataProject=>{
-          res.render('editDetail',
-          {
-            editDetail:editDetail,
-            dataEmployes:dataEmployes,
-            dataProject:dataProject
-          })
+          res.send(dataProject)
+          // res.render('editDetail',
+          // {
+          //   editDetail:editDetail,
+          //   dataEmployes:dataEmployes,
+          //   dataProject:dataProject
+          // })
         })
       })
     })
@@ -184,6 +185,7 @@ router.post('/detail/:idProject/edit/:idDetail', (req, res)=>{
 })
 
 router.get('/detail/:idProject/delete/:idDetail', (req, res)=>{
+  // res.send(req.params)
   model.Detail.destroy(
     {
       where:{

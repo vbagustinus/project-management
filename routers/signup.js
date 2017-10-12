@@ -33,7 +33,7 @@ router.post('/', (req, res)=>{
       role: req.body.role,
       salt: secret
     }).then(()=>{
-      res.redirect('/login')
+      res.redirect('/user')
     })
 })
 

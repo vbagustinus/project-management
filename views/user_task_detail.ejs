@@ -36,6 +36,7 @@
       </thead>
       <tbody>
         <%dataProject.forEach(function(showDetail){%>
+          <%if(showDetail.Detail){%>
             <tr>
               <td><%=showDetail.Detail.id%></td>
               <td><%=showDetail.Detail.task%></td>
@@ -44,12 +45,11 @@
                   <%}else{%>
                   <td>Unassigned</td>  
                   <%}%>
-              
               <td><%=showDetail.Detail.status%></td>
-              <td><a href="<%=dataProject.id%>/edit/<%=showDetail.id%>">Edit</a></td>
-              <td><a href="<%=dataProject.id%>/delete/<%=showDetail.id%>">Delete</a></td>
-              </tr>
-       <% })%>
+              <td><a href="<%=namaProject.id%>/edit/<%=showDetail.Detail.id%>">Edit</a></td>
+              <td><a href="<%=namaProject.id%>/delete/<%=showDetail.Detail.id%>">Delete</a></td>
+            </tr>
+       <% }})%>
     </table>
   </div>
   <!-- FORM START -->
@@ -57,7 +57,7 @@
   <br>
   <section class="container">
     <div class="container">
-      <form class="" action="/project/detail/<%=dataProject.id%>/add/" method="post">
+      <form class="" action="/project/detail/<%=namaProject.id%>/add/" method="post">
         
               
         <div class="field">

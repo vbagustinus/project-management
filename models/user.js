@@ -4,7 +4,12 @@ module.exports = (sequelize, DataTypes) => {
     name: DataTypes.STRING,
     username: DataTypes.STRING,
     password: DataTypes.STRING,
-    role: DataTypes.STRING
+    role: DataTypes.STRING,
+    salt: {
+      type : DataTypes.STRING,
+      isUnique: true,
+      allowNull: false
+    }
   }, {
     classMethods: {
       associate: function(models) {
