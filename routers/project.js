@@ -92,6 +92,7 @@ router.post('/task/:id', (req, res)=>{
         res.redirect(`/project/task/${req.params.id}`)
       })
 })
+
 // router.get('/:id/addemployee', (req, res)=>{
 //   model.Project.findById(req.params.id)
 //     .then(dataProject=>{
@@ -126,7 +127,7 @@ router.post('/task/:id', (req, res)=>{
 //   // console.log('==============',req.params.id)
 //   model.Project.findById(req.params.id)
 //   .then(namaProject=>{
-//     model.Project_Detail.findAll({ 
+//     model.Project_Detail.findAll({
 //       include: ['Detail'],
 //       where: {
 //         ProjectId: req.params.id
@@ -150,6 +151,6 @@ router.post('/task/:id', (req, res)=>{
 //   })
 // })
 
-// 
+//
 
 module.exports=router;

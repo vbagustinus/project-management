@@ -34,20 +34,20 @@
         </tr>
       </thead>
       <tbody>
-        <% dataDetails.forEach(function(detail) { %>
-          <% if(detail){%>
+        <% for(let i = 0; i < dataDetails.length; i ++){%>
+          <% if(dataDetails){%>
             <tr>
-              <td><%= detail.id%></td>
-              <td><%= detail.task%></td>
-                <% if(detail.UserId){%>
-                  <td><%= detail.name %></td>
+              <td><%= dataDetails[i].id%></td>
+              <td><%= dataDetails[i].task%></td>
+                <% if(dataDetails[i].User.name){%>
+                  <td><%= dataDetails[i].User.name %></td>
                 <% }else{ %>
                   <td>Unassigned</td>
                 <%}%>
-              <td><a href="<%= detail.id %>/edit/<%= detail.id%>">Edit</a></td>
-              <td><a href="<%= detail.id%>/delete/<%= detail.id%>">Delete</a></td>
+              <td><a href="/task/edit/<%= dataDetails[i].id%>">Edit</a></td>
+              <td><a href="/task/delete/<%= dataDetails[i].id%>">Delete</a></td>
             </tr>
-        <% }})%>
+        <% }}%>
       </tbody>
     </table>
   </div>
@@ -82,6 +82,7 @@
             </div>
           </div>
         </div>
+        
         <div class="field is-grouped">
           <div class="control">
             <button class="button is-primary">Submit</button>
