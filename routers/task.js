@@ -2,6 +2,14 @@ var express = require('express')
 var router = express.Router()
 let model = require('../models')
 
+router.use(function(req, res, next) {
+  if(req.session.hasOwnProperty('username')){
+    next();
+  }else {
+    res.render('login', { msgError: ""})
+  }
+})
+
 router.get('/', (req, res)=>{
 
     // model.User.findAll(
@@ -27,7 +35,8 @@ router.get('/', (req, res)=>{
           model.User.findAll().then(function(user){
             res.render('task', {
               dataDetails:details,
-              dataUsers:user
+              dataUsers:user,
+              session: req.session
             })
           })
         })

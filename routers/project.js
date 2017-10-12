@@ -2,18 +2,18 @@ var express = require('express')
 var router = express.Router()
 let model = require('../models')
 
-// router.use(function(req, res, next) {
-//   if(req.session.hasOwnProperty('username')){
-//     next();
-//   }else {
-//     res.render('login', { msgError: ""})
-//   }
-// })
+router.use(function(req, res, next) {
+  if(req.session.hasOwnProperty('username')){
+    next();
+  }else {
+    res.render('login', { msgError: ""})
+  }
+})
 // define the home page route
 router.get('/', function (req, res) {
   model.Project.findAll()
     .then(dataProjects =>{
-      res.render('project', {dataProjects:dataProjects})
+      res.render('project', {dataProjects:dataProjects,session:req.session})
     })
 })
 
@@ -26,7 +26,7 @@ router.post('/add', (req, res)=>{
     name: req.body.name,
     deadline: req.body.deadline
   }).then(()=>{
-    res.redirect('/project')
+    res.redirect('/project',{session:req.session})
   })
 })
 
@@ -79,7 +79,7 @@ router.get('/task/:id',(req, res)=>{
             })
           })
       })
-})
+  })
 })
 
 router.post('/task/:id', (req, res)=>{

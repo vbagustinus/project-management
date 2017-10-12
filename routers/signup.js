@@ -5,16 +5,16 @@ const crypto = require('crypto');
 let randomAlphanumeric =  require('../helper/randomNumber')
 // define the home page route
 
-// router.use(function(req,res,next) {
-//   if(req.session.hasOwnProperty('username')) {
-//     res.redirect('/')
-//   } else {
-//     next()
-//   }
-// })
+router.use(function(req,res,next) {
+  if(req.session.hasOwnProperty('username')) {
+    res.redirect('/')
+  } else {
+    next()
+  }
+})
 
 router.get('/', function (req, res) {
-  res.render('signup')
+  res.render('signup',{session:req.session})
 })
 
 router.post('/', (req, res)=>{
