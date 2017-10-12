@@ -1,4 +1,4 @@
-function sendEmail(){
+function sendEmail(project, deadline){
   const nodemailer = require('nodemailer')
   let transporter = nodemailer.createTransport({
       host: 'smtp.gmail.com',
@@ -10,11 +10,13 @@ function sendEmail(){
           pass: 'testemail12345'
       }
   });
+  let tanggal = deadline.getDate() +' - ' + deadline.getMonth()+' - '+deadline.getFullYear();
+  // console.log(tanggal)
   let mailOptions = {
       from: 'testemaiajah@gmail.com',
       to: 'albiardtya@gmail.com, vbagustinus@gmail.com',
       subject: 'Deadline',
-      text: 'Nih pesan BUAT loe!'
+      text: `${project} segera berakhir 2 hari lagi tepatnya pada ${tanggal}`
   };
   transporter.sendMail(mailOptions, (error, info) => {
       if (error) {

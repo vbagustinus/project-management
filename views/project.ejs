@@ -35,11 +35,9 @@
       </thead>
       <tbody>
         <%dataProjects.forEach(function(showProjects){%>
-          
-                
             <%let a = new Date()%>
-            <%if(showProjects.deadline.getDate()-a.getDate() === 2){%>
-              <tr class="is-selected">
+            <%if(showProjects.deadline.getDate()-a.getDate() <= 2){%>
+              <tr bgcolor="#FF0000">
            <% } else { %>
             <tr>
            <% }%>
@@ -51,8 +49,13 @@
                   <%}else{%>
                   <td>Unset</td>
                   <%}%>
-
-                <td><a href="project/task/<%=showProjects.id%>">Assign Task</a></td>
+                  <%let b = new Date()%>
+                  <%if(showProjects.deadline.getDate()-b.getDate() <= 2){%>
+                    <td><a href="project/sendEmail/<%=showProjects.id%>">Send Email</a></td>
+                 <% } else { %>
+                   <td><a href="project/task/<%=showProjects.id%>">Assign Task</a></td>
+                 <% }%>
+                
                 <td><a href="project/edit/<%=showProjects.id%>">Edit</a></td>
                 <td><a href="project/delete/<%=showProjects.id%>">Delete</a></td>
               </tr>

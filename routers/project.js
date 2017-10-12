@@ -1,6 +1,7 @@
 var express = require('express')
 var router = express.Router()
 let model = require('../models')
+let sendemail =  require('../helper/sendEmail')
 
 router.use(function(req, res, next) {
   if (req.session.hasOwnProperty('username')) {
@@ -108,6 +109,13 @@ router.get('/task/delete/:id', (req, res) => {
     })
     .then(() => {
       res.redirect('/project/task');
+    })
+})
+router.get('/sendEmail/:id', (req, res)=>{
+  model.Project.findById(req.params.id)
+    .then(dataProject=>{
+       sendemail(dataProject.name, dataProject.deadline);
+       res.redirect('/project')
     })
 })
 
