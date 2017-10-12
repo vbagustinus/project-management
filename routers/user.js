@@ -2,18 +2,18 @@ var express = require('express')
 var router = express.Router()
 let model = require('../models')
 let randomAlphanumeric =  require('../helper/randomNumber')
-// router.use(function(req, res, next) {
-//   if(req.session.hasOwnProperty('username')){
-//     next();
-//   }else {
-//     res.render('login', { msgError: ""})
-//   }
-// })
+router.use(function(req, res, next) {
+  if(req.session.hasOwnProperty('username')){
+    next();
+  }else {
+    res.render('login', { msgError: ""})
+  }
+})
 // define the home page route
 router.get('/', function (req, res) {
   model.User.findAll()
     .then(dataUsers=>{
-      res.render('user', {dataUsers:dataUsers})
+      res.render('user', {dataUsers:dataUsers,session:req.session})
     }) 
 })
 

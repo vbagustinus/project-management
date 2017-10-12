@@ -12,56 +12,78 @@
     </div>
   </div>
   <div id="navMenuTransparentExample" class="navbar-menu">
+    <!-- =============================== -->
     <div class="navbar-start">
-      <div class="navbar-item">
-        <a class="navbar-item" href="/">
-          Home
-        </a>
-      </div>
-      <div class="navbar-item has-dropdown is-hoverable">
-        <a class="navbar-link " href="/project">
-          Project
-        </a>
-        <div id="blogDropdown" class="navbar-dropdown is-boxed" data-style="width: 18rem;">
-            <a class="navbar-item" href="/project/add">
-              <div class="navbar-content">
-                <p>
-                  Add Project
-                </p>
+        <%if(session.hasOwnProperty('role')) {
+          if(session.role === 'manager'){%>
+            <!-- MANAGER -->
+            <div class="navbar-item">
+                <a class="navbar-item" href="/">
+                  Home
+                </a>
               </div>
-            </a>
-        </div>
-      </div>
-      <div class="navbar-item has-dropdown is-hoverable">
-        <a class="navbar-link" href="/user">
-          User
-        </a>
-        <div id="moreDropdown" class="navbar-dropdown is-boxed">
-          <a class="navbar-item " href="/signup">
-            <div class="navbar-content">
-              <p>
-                Add User
-              </p>
-            </div>
-          </a>
-        </div>
-      </div>
-      <div class="navbar-item has-dropdown is-hoverable">
-        <a class="navbar-item" href="/task">
-          Task
-        </a>
-      </div>
+              <div class="navbar-item has-dropdown is-hoverable">
+                <a class="navbar-link " href="/project">
+                  Project
+                </a>
+                <div id="blogDropdown" class="navbar-dropdown is-boxed" data-style="width: 18rem;">
+                    <a class="navbar-item" href="/project/add">
+                      <div class="navbar-content">
+                        <p>
+                          Add Project
+                        </p>
+                      </div>
+                    </a>
+                </div>
+              </div>
+              <div class="navbar-item has-dropdown is-hoverable">
+                <a class="navbar-link" href="/user">
+                  User
+                </a>
+                <div id="moreDropdown" class="navbar-dropdown is-boxed">
+                  <a class="navbar-item " href="/signup">
+                    <div class="navbar-content">
+                      <p>
+                        Add User
+                      </p>
+                    </div>
+                  </a>
+                </div>
+              </div>
+              <div class="navbar-item has-dropdown is-hoverable">
+                <a class="navbar-item" href="/task">
+                  Task
+                </a>
+              </div>
+            <!-- TUTUP MANAGER --> 
+          <%} else if(session.role === 'employee'){%>
+            <!-- EMPLOYEE -->
+            <div class="navbar-item">
+                <a class="navbar-item" href="/">
+                  Home
+                </a>
+              </div>
+              <div class="navbar-item">
+                <a class="navbar-item " href="/project">
+                  Project
+                </a>
+              </div>
+              <div class="navbar-item">
+                <a class="navbar-item" href="/task">
+                  Task
+                </a>
+              </div>
+            <!-- TUTUP EMPLOYEE -->
+         <% }
+        }%>
+      
     </div>
+    <!-- ================================ -->
     <div class="navbar-end">
       <div class="navbar-item">
         <div class="field is-grouped">
           <p class="control">
-            <a class="button is-primary" href="https://github.com/jgthms/bulma/archive/0.5.3.zip">
-              <span>Log In</span>
-            </a>
-          </p>
-          <p class="control">
-            <a class="button is-primary" href="https://github.com/jgthms/bulma/archive/0.5.3.zip">
+            <a class="button is-primary" href="logout">
               <span>Log Out</span>
             </a>
           </p>
