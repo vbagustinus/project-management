@@ -32,6 +32,4 @@ app.use('/', index);
 app.use('/project', project);
 app.use('/logout', logout);
 
-app.listen(3000, function () {
-  console.log('Running on port 3000!')
-})
+app.listen(process.env.PORT || '3000')
