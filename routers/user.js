@@ -2,6 +2,9 @@ var express = require('express')
 var router = express.Router()
 let model = require('../models')
 let randomAlphanumeric =  require('../helper/randomNumber')
+const crypto = require('crypto');
+
+
 router.use(function(req, res, next) {
   if(req.session.hasOwnProperty('username')){
     next();
