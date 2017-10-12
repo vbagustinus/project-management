@@ -17,7 +17,7 @@ module.exports = {
       username: 'admin',
       password: 'admin',
       role:'manager',
-      slat: '',
+      salt: '',
       createdAt: new Date(),
       updatedAt: new Date()
     }]);
