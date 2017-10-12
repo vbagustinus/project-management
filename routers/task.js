@@ -113,23 +113,23 @@ router.get('/', (req, res)=>{
       })
   })
 
-  router.post('/detail/:idProject/edit/:idDetail', (req, res)=>{
-    model.Detail.update(
-      {
-        task: req.body.task,
-        status: req.body.status,
-        UserId: req.body.UserId
-      },{
-        where:{
-          id: req.params.idDetail
-        }
-      }).then(()=>{
-        var id = req.params.idProject
-        res.redirect(`/project/detail/${id}`)
-      })
-  })
+  // router.post('/detail/:idProject/edit/:idDetail', (req, res)=>{
+  //   model.Detail.update(
+  //     {
+  //       task: req.body.task,
+  //       status: req.body.status,
+  //       UserId: req.body.UserId
+  //     },{
+  //       where:{
+  //         id: req.params.idDetail
+  //       }
+  //     }).then(()=>{
+  //       var id = req.params.idProject
+  //       res.redirect(`/project/detail/${id}`)
+  //     })
+  // })
 
-  router.get('/detail/:idProject/delete/:idDetail', (req, res)=>{
+  router.get('/delete/:idDetail', (req, res)=>{
     // res.send(req.params)
     model.Detail.destroy(
       {
@@ -138,7 +138,7 @@ router.get('/', (req, res)=>{
         }
       }).then(()=>{
         var id = req.params.idProject
-        res.redirect(`/project/detail/${id}`)
+        res.redirect(`/task`)
       })
   })
 
