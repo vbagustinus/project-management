@@ -18,7 +18,8 @@ module.exports = {
       password: 'admin',
       role:'manager',
       createdAt: new Date(),
-      updatedAt: new Date()
+      updatedAt: new Date(),
+      salt: 'bMqOztQx'
     }]);
   },
 
