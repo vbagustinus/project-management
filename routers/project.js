@@ -26,7 +26,7 @@ router.post('/add', (req, res)=>{
     name: req.body.name,
     deadline: req.body.deadline
   }).then(()=>{
-    res.redirect('/project',{session:req.session})
+    res.redirect('/project')
   })
 })
 

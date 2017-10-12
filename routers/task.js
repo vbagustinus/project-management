@@ -32,7 +32,11 @@ router.get('/', (req, res)=>{
         model.Detail.findAll({
           include: [model.User]
         }).then(function(details){
-          model.User.findAll().then(function(user){
+          model.User.findAll({
+            where: {
+              role: 'employee'
+            }
+          }).then(function(user){
             res.render('task', {
               dataDetails:details,
               dataUsers:user,
@@ -113,21 +117,21 @@ router.get('/', (req, res)=>{
       })
   })
 
-  // router.post('/detail/:idProject/edit/:idDetail', (req, res)=>{
-  //   model.Detail.update(
-  //     {
-  //       task: req.body.task,
-  //       status: req.body.status,
-  //       UserId: req.body.UserId
-  //     },{
-  //       where:{
-  //         id: req.params.idDetail
-  //       }
-  //     }).then(()=>{
-  //       var id = req.params.idProject
-  //       res.redirect(`/project/detail/${id}`)
-  //     })
-  // })
+  router.post('/edit/:idDetail', (req, res)=>{
+    model.Detail.update(
+      {
+        task: req.body.task,
+        status: req.body.status,
+        UserId: req.body.UserId
+      },{
+        where:{
+          id: req.params.idDetail
+        }
+      }).then(()=>{
+        var id = req.params.idProject
+        res.redirect('/task')
+      })
+  })
 
   router.get('/delete/:idDetail', (req, res)=>{
     // res.send(req.params)
