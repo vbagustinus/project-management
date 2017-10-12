@@ -30,7 +30,6 @@
           <th>Deadline</th>
           <th>Detail</th>
           <th colspan="2">Actions</th>
-
         </tr>
       </thead>
       <tbody>
@@ -41,7 +40,7 @@
                 <% if(showProjects.deadline){%>
                   <td><%=showProjects.deadline%></td>
                   <%}else{%>
-                  <td>Unset</td>  
+                  <td>Unset</td>
                   <%}%>
                 <td><a href="project/task/<%=showProjects.id%>">Assign Task</a></td>
                 <td><a href="project/edit/<%=showProjects.id%>">Edit</a></td>
@@ -50,6 +49,9 @@
        <% })%>
     </table>
   </div>
+  <!-- SECTION END -->
+  <!-- FOOTER -->
   <%- include('./partials/footer')%>
+  <!-- FOOTER END -->
 </body>
 </html>

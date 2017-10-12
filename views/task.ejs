@@ -13,7 +13,7 @@
         <h1 class="title">
         </h1>
         <h2 class="subtitle">
-          All projects detail are here
+          All projects task are here
         </h2>
       </div>
     </div>
@@ -42,7 +42,7 @@
                 <% if(detail.UserId){%>
                   <td><%= detail.name %></td>
                 <% }else{ %>
-                  <td>Unassigned</td>  
+                  <td>Unassigned</td>
                 <%}%>
               <td><a href="<%= detail.id %>/edit/<%= detail.id%>">Edit</a></td>
               <td><a href="<%= detail.id%>/delete/<%= detail.id%>">Delete</a></td>
@@ -51,7 +51,7 @@
       </tbody>
     </table>
   </div>
- 
+
   <!-- FORM START -->
   <br>
   <br>
@@ -72,7 +72,7 @@
                 <select name="UserId">
                   <% dataUsers.forEach(listEmployes=>{
                     if(listEmployes){%>
-                    
+
                     <option value='<%=listEmployes.id%>'>
 
                       <%=listEmployes.name%>
@@ -91,7 +91,6 @@
     </div>
   </section>
   <!-- FORM END -->
-
   <!-- SECTION END -->
   <%- include('./partials/footer')%>
 </body>
