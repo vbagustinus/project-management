@@ -19,7 +19,7 @@ app.use(session(
 let index = require('./routers/index');
 let user = require('./routers/user');
 let project = require('./routers/project');
-// let user_task_detail = require('./routers/user_task_detail');
+let task = require('./routers/task');
 let login = require('./routers/login');
 let signup = require('./routers/signup');
 let logout = require('./routers/logout');
@@ -27,7 +27,7 @@ let logout = require('./routers/logout');
 app.use('/login', login);
 app.use('/signup', signup);
 app.use('/user', user);
-// app.use('/user_task_detail', user_task_detail);
+app.use('/task', task);
 app.use('/', index);
 app.use('/project', project);
 app.use('/logout', logout);

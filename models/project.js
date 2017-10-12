@@ -11,11 +11,11 @@ module.exports = (sequelize, DataTypes) => {
     }
   });
   Project.associate = model =>{
-    Project.hasMany(model.Project_Detail, {as: 'ProjectId'})
+    // Project.hasMany(model.Project_Detail, {as: 'ProjectId'})
+    Project.hasMany(model.Project_Detail)    
     Project.belongsToMany(model.Detail,
       {
-        through: 'Project_Details',
-        foreignKey: 'ProjectId'
+        through: 'Project_Detail'
       })
   }
   return Project;

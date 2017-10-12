@@ -23,7 +23,6 @@
   <br>
   <br>
   <div class="container">
-    Nama Project : <%= dataProject.name %>
     <table class="table is-fullwidth">
       <thead>
         <tr>
@@ -35,7 +34,7 @@
         </tr>
       </thead>
       <tbody>
-        <% dataProjectDetails.forEach(function(detail) { %>
+        <% dataDetails.forEach(function(detail) { %>
           <% if(detail){%>
             <tr>
               <td><%= detail.id%></td>
@@ -45,7 +44,6 @@
                 <% }else{ %>
                   <td>Unassigned</td>  
                 <%}%>
-              <td><%= detail.status%></td>
               <td><a href="<%= detail.id %>/edit/<%= detail.id%>">Edit</a></td>
               <td><a href="<%= detail.id%>/delete/<%= detail.id%>">Delete</a></td>
             </tr>
@@ -59,9 +57,7 @@
   <br>
   <section class="container">
     <div class="container">
-      <form class="" action="/project/detail/<%= dataProject.id %>/add/" method="post">
-        
-              
+      <form action="/task/add" method="post">
         <div class="field">
           <label class="label">Task:</label>
           <div class="control">
@@ -86,20 +82,6 @@
             </div>
           </div>
         </div>
-
-        <div class="field">
-          <label class="label">Status:</label>
-          <div class="control">
-            <div class="select">
-              <select name="status">
-                  <option value="inprogress">In Progress</option>
-                  <option value="pending">Pending</option>
-                  <option value="done">Done</option>
-              </select>
-            </div>
-          </div>
-        </div>
-
         <div class="field is-grouped">
           <div class="control">
             <button class="button is-primary">Submit</button>
