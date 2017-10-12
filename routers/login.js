@@ -37,9 +37,11 @@ router.post('/',(req, res)=>{
           // console.log(req.session.role);
           res.redirect('/')
         } else {
-          res.render('login')
+          res.render('login',{error:''})
         }
 
+      }).catch(function(){
+        res.render('login',{error:''})
       })
 
     }

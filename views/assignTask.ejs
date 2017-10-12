@@ -29,7 +29,7 @@
         <tr>
           <th>Id</th>
           <th>Task</th>
-          <th colspan="2">Options</th>
+          <th colspan="1">Options</th>
         </tr>
       </thead>
       <tbody>
@@ -38,11 +38,10 @@
           <tr>
               <td><%=listTask.id%></td>
               <td><%=listTask.task%></td>
-              <td><a href="#">Edit</a></td>
-              <td><a href="#">Delete</a></td>
+              <td><a href="/project/task/delete/<%= listTask.id %>">Delete</a></td>
             </tr>
        <%} })%>
-            
+
     </table>
     <%=dataProjectDetails.Detail%>
   </div>

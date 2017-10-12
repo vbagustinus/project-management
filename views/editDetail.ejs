@@ -1,28 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+  <%- include('./partials/head')%>
+    <title>Edit Task</title>
 </head>
+
 <body>
-        <section class="container">
-                <div class="container">
-                  <form class="" action="/project/detail/<%=dataProject.id%>/edit/<%=editDetail.id%>" method="post">
-                          
-                    <div class="field">
-                      <label class="label">Task:</label>
-                      <div class="control">
-                        <input name="task" class="input" type="text" value="<%=editDetail.task%>" placeholder="Text input">
-                      </div>
-                    </div>
-            
-                    <div class="field">
-                      <label class="label">Employee Assigned:</label>
-                      <div class="control">
-                        <div class="select">
-                            <select name="UserId">
+  <!-- HEADER -->
+  <%- include('./partials/header')%>
+  <!-- HEADER END -->
+  <!-- HERO SECTION -->
+  <section class="hero is-primary">
+    <div class="hero-body">
+      <div class="container">
+        <h1 class="title">
+          Edit Task
+        </h1>
+        <h2 class="subtitle">
+          Edit your tasks here
+        </h2>
+      </div>
+    </div>
+  </section>
+  <!-- HERO SECTION END -->
+  <!-- SECTION -->
+  <br><br>
+  <section class="container">
+    <div class="container">
+      <form class="" action="/task/edit/<%=editDetail.id%>" method="post">
+        <div class="field">
+          <label class="label">Task:</label>
+          <div class="control">
+            <input name="task" class="input" type="text" value="<%=editDetail.task%>" placeholder="Text input">
+          </div>
+        </div>
+        <div class="field">
+          <label class="label">Employee Assigned:</label>
+          <div class="control">
+            <div class="select">
+              <select name="UserId">
                               <%dataEmployes.forEach(listEmployes=>{%>
                                 <%if(listEmployes.id===editDetail.UserId){%>
                                     <option selected value='<%=listEmployes.id %>'>
@@ -35,40 +52,21 @@
                                           <%}
                                 }, this)%>
                           </select>
-                        </div>
-                      </div>
-                    </div>
-            
-                    <div class="field">
-                      <label class="label">Status:</label>
-                      <div class="control">
-                        <div class="select">
-                          <select name="status">
-                              <%if(editDetail.status=='inprogress'){%>
-                                    <option selected value="inprogress">In Progress</option>
-                                    <option value="pending">Pending</option>
-                                    <option value="done">Done</option>
-                                <%} else if(editDetail.status=='pending'){%>
-                                    <option value="inprogress">In Progress</option>
-                                    <option selected value="pending">Pending</option>
-                                    <option value="done">Done</option>
-                                <%}else if(editDetail.status=='done'){%>
-                                    <option value="inprogress">In Progress</option>
-                                    <option value="pending">Pending</option>
-                                    <option selected value="done">Done</option>
-                                <%}%>
-                          </select>
-                        </div>
-                      </div>
-                    </div>
-            
-                    <div class="field is-grouped">
-                      <div class="control">
-                        <button class="button is-primary">Submit</button>
-                      </div>
-                    </div>
-                  </form>
-                </div>
-              </section>
+            </div>
+          </div>
+        </div>
+        <div class="field is-grouped">
+          <div class="control">
+            <button class="button is-primary">Submit</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </section>
+  <!-- SECTION END -->
+  <!-- FOOTER -->
+  <%- include('./partials/footer')%>
+  <!-- FOOTER END -->
 </body>
+
 </html>
