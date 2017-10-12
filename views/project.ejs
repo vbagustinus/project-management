@@ -34,7 +34,15 @@
       </thead>
       <tbody>
         <%dataProjects.forEach(function(showProjects){%>
+          
+                
+            <%let a = new Date()%>
+            <%if(showProjects.deadline.getDate()-a.getDate() === 2){%>
+              <tr class="is-selected">
+           <% } else { %>
             <tr>
+           <% }%>
+           
                 <td><%=showProjects.id%></td>
                 <td><%=showProjects.name%></td>
                 <% if(showProjects.deadline){%>
