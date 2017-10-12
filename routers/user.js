@@ -14,12 +14,12 @@ router.get('/', function (req, res) {
   model.User.findAll()
     .then(dataUsers=>{
       res.render('user', {dataUsers:dataUsers,session:req.session})
-    }) 
+    })
 })
 
 router.get('/edit/:id', (req, res)=>{
   model.User.findById(req.params.id).then(editUser=>{
-    res.render('editUser', {editUser:editUser});
+    res.render('editUser', {editUser:editUser,session: req.session});
   })
 })
 

@@ -105,7 +105,8 @@ router.get('/', (req, res)=>{
             {
               editDetail:editDetail,
               dataEmployes:dataEmployes,
-              dataProject:dataProject
+              dataProject:dataProject,
+              session: req.session
             })
           })
         })

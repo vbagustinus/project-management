@@ -18,7 +18,7 @@ router.get('/', function (req, res) {
 })
 
 router.get('/add', (req, res)=>{
-  res.render('addProject')
+  res.render('addProject',{session: req.session})
 })
 
 router.post('/add', (req, res)=>{
@@ -33,7 +33,7 @@ router.post('/add', (req, res)=>{
 router.get('/edit/:id', (req, res)=>{
   // console.log('==============',req.params.id)
   model.Project.findById(req.params.id).then(editProject=>{
-    res.render('editProject', {editProject:editProject});
+    res.render('editProject', {editProject:editProject,session: req.session});
   })
 })
 
@@ -75,7 +75,8 @@ router.get('/task/:id',(req, res)=>{
              res.render('assignTask', {
              dataProject:dataProject,
              dataTask:dataTask,
-             dataProjectDetails: details
+             dataProjectDetails: details,
+             session: req.session
             })
           })
       })
