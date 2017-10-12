@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include('./partials/head')%>
+  <title>Detail</title>
+</head>
+<body>
+  <%- include('./partials/header')%>
+  <!-- HERO SECTION -->
+  <section class="hero is-primary">
+    <div class="hero-body">
+      <div class="container">
+        <h1 class="title">
+          Projects Detail <%=dataProject.name%>
+        </h1>
+        <h2 class="subtitle">
+          All projects detail are here
+        </h2>
+      </div>
+    </div>
+  </section>
+  <!-- HERO SECTION END -->
+  <!-- SECTION START -->
+  <br>
+  <br>
+  <div class="container">
+    <table class="table is-fullwidth">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Task</th>
+          <th colspan="2">Options</th>
+        </tr>
+      </thead>
+      <tbody>
+        <%dataProjectDetails.forEach(listTask=>{%>
+          <%if(listTask){%>
+          <tr>
+              <td><%=listTask.id%></td>
+              <td><%=listTask.task%></td>
+              <td><a href="#">Edit</a></td>
+              <td><a href="#">Delete</a></td>
+            </tr>
+       <%} })%>
+            
+    </table>
+    <%=dataProjectDetails.Detail%>
+  </div>
+  <!-- FORM START -->
+  <br>
+  <br>
+  <section class="container">
+    <div class="container">
+      <form class="" action="<%=dataProject.id%>" method="post">
+        <div class="field">
+          <label class="label">Task Assigned:</label>
+          <div class="control">
+            <div class="select">
+                <select name="DetailId">
+                  <%dataTask.forEach(listTasks=>{
+                    if(listTasks){%>
+                    <option value='<%=listTasks.id%>'>
+                      <%=listTasks.task%>
+                    </option>
+                  <%}
+                })%>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="field is-grouped">
+          <div class="control">
+            <button class="button is-primary">Submit</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </section>
+  <!-- FORM END -->
+  <!-- SECTION END -->
+  <%- include('./partials/footer')%>
+</body>
+</html>
