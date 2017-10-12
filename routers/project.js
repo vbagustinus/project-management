@@ -64,6 +64,34 @@ router.get('/delete/:id', (req, res)=>{
     })
 })
 
+router.get('/task/:id',(req, res)=>{
+  model.Detail.findAll()
+  .then(dataTask=>{
+    model.Project.findById(req.params.id)
+      .then((dataProject)=>{
+        dataProject.getDetails()
+        .then((details) => {
+
+             res.render('assignTask', {
+             dataProject:dataProject,
+             dataTask:dataTask,
+             dataProjectDetails: details
+            })
+          })
+      })
+})
+})
+
+router.post('/task/:id', (req, res)=>{
+  model.Project_Detail.create(
+    {
+      ProjectId: req.params.id,
+      DetailId: req.body.DetailId
+    })
+      .then(()=>{
+        res.redirect(`/project/task/${req.params.id}`)
+      })
+})
 // router.get('/:id/addemployee', (req, res)=>{
 //   model.Project.findById(req.params.id)
 //     .then(dataProject=>{
@@ -122,118 +150,6 @@ router.get('/delete/:id', (req, res)=>{
 //   })
 // })
 
-// router.get('/detail/:id', (req, res)=>{
-
-//   model.User.findAll()
-//   .then(function(users) {
-//     model.Project.findById(req.params.id)
-//     .then(project => {
-//       project.getDetails()
-//       .then((details) => {
-  
-//         if(details.length > 0) {
-//           var count = 0
-//           details.forEach(function(detail) {
-//             model.User.findById(detail.UserId)
-//             .then(function(user) {
-//               detail.name = user.name
-    
-//               count++
-    
-//               if(count == details.length) {
-//                 res.render('user_task_detail', {
-//                   dataProject: project,
-//                   dataProjectDetails: details
-//                 })
-//               }
-//             })
-//           })
-//         } else {
-//           res.render('user_task_detail', {
-//             dataProject: project,
-//             dataProjectDetails: details,
-//             dataUsers: users
-//           })
-//         }
-        
-        
-//       })
-//     })
-//   })
-  
-// })
- 
-// router.post('/detail/:idProject/add', (req, res)=>{
-//   // res.send(req.body.id)
-//   model.Detail.create(
-//     {
-//       task: req.body.task,
-//       status: req.body.status,
-//       UserId: req.body.UserId
-//     }).then((dataDetail)=>{
-//       // console.log('=============',dataDetail)
-//       model.Project_Detail.create(
-//         {
-//           DetailId: dataDetail.id,
-//           ProjectId: req.params.idProject
-//         })
-//           .then(()=>{
-//             var id = req.params.idProject
-//             res.redirect(`/project/detail/${id}`)
-//           })
-//     })
-// })
-
-// router.get('/detail/:idProject/edit/:idDetail',(req, res)=>{
-//   model.Detail.findById(req.params.idDetail)
-//     .then(editDetail=>{
-//       model.User.findAll({
-//         where:{
-//           role: 'employee'
-//         }
-//       })
-//       .then(dataEmployes =>{
-//         model.Project.findById(req.params.idProject)
-//         .then(dataProject=>{
-//           // res.send(editDetail)
-//           res.render('editDetail',
-//           {
-//             editDetail:editDetail,
-//             dataEmployes:dataEmployes,
-//             dataProject:dataProject
-//           })
-//         })
-//       })
-//     })
-// })
-
-// router.post('/detail/:idProject/edit/:idDetail', (req, res)=>{
-//   model.Detail.update(
-//     {
-//       task: req.body.task,
-//       status: req.body.status,
-//       UserId: req.body.UserId
-//     },{
-//       where:{
-//         id: req.params.idDetail
-//       }
-//     }).then(()=>{
-//       var id = req.params.idProject
-//       res.redirect(`/project/detail/${id}`)
-//     })
-// })
-
-// router.get('/detail/:idProject/delete/:idDetail', (req, res)=>{
-//   // res.send(req.params)
-//   model.Detail.destroy(
-//     {
-//       where:{
-//         id: req.params.idDetail
-//       }
-//     }).then(()=>{
-//       var id = req.params.idProject
-//       res.redirect(`/project/detail/${id}`)
-//     })
-// })
+// 
 
 module.exports=router;
