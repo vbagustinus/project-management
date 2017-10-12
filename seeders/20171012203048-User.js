@@ -17,7 +17,6 @@ module.exports = {
       username: 'admin',
       password: '9079dbe1a6d61c66bc2bd12552eacf2fd82f4d7facab8b8fc8be178b2adc1414',
       role:'manager',
-      salt: 'bMqOztQx',
       createdAt: new Date(),
       updatedAt: new Date()
     }]);
