@@ -7,7 +7,7 @@ router.use(function(req, res, next) {
   if (req.session.hasOwnProperty('username')) {
     next();
   } else {
-    res.render('login')
+    res.redirect('/login')
   }
 })
 // define the home page route
@@ -16,6 +16,7 @@ router.get('/', function(req, res) {
     .then(dataProjects => {
       res.render('project', {
         dataProjects: dataProjects,
+        log: null,
         session: req.session
       })
     })
@@ -114,8 +115,16 @@ router.get('/task/:ip/delete/:id', (req, res) => {
 router.get('/sendEmail/:id', (req, res)=>{
   model.Project.findById(req.params.id)
     .then(dataProject=>{
-       sendemail(dataProject.name, dataProject.deadline);
-       res.redirect('/project')
+      sendemail(dataProject.name, dataProject.deadline, (log) => {
+        model.Project.findAll()
+          .then(dataProjects => {
+            res.render('project', {
+              log: log,
+              session: req.session,
+              dataProjects: dataProjects
+            })
+          })
+      })
     })
 })
 

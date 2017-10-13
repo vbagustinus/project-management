@@ -1,4 +1,4 @@
-function sendEmail(project, deadline){
+function sendEmail(project, deadline, cb){
   const nodemailer = require('nodemailer')
   let transporter = nodemailer.createTransport({
       host: 'smtp.gmail.com',
@@ -22,7 +22,8 @@ function sendEmail(project, deadline){
       if (error) {
           return console.log('Waduh', error.message);
       }
-      console.log('Pesan Terkirim');
+      cb('Message Sent!')
+
   });
 }
 module.exports = sendEmail;
