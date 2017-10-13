@@ -100,7 +100,7 @@ router.post('/task/:id', (req, res) => {
     })
 })
 
-router.get('/task/delete/:id', (req, res) => {
+router.get('/task/:ip/delete/:id', (req, res) => {
   // console.log(req.params.id)
   model.Project_Detail.destroy({
       where: {
@@ -108,7 +108,7 @@ router.get('/task/delete/:id', (req, res) => {
       }
     })
     .then(() => {
-      res.redirect('/project/task');
+      res.redirect(`/project/task/${req.params.ip}`);
     })
 })
 router.get('/sendEmail/:id', (req, res)=>{
