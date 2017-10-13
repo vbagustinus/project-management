@@ -21,8 +21,14 @@
   </section>
   <!-- HERO SECTION END -->
   <!-- SECTION START -->
-  <br><br>
-  <h1><%= log %></h1>
+  <% if(log) {%>
+  <div class="notification is-primary">
+    <strong>
+      <%= log %>
+    </strong>
+  </div>
+  <% } %>
+  <br>
   <div class="container">
     <table class="table is-fullwidth">
       <thead>

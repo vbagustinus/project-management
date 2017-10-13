@@ -7,7 +7,7 @@ router.use(function(req, res, next) {
   if (req.session.hasOwnProperty('username')) {
     next();
   } else {
-    res.render('login')
+    res.redirect('/login')
   }
 })
 // define the home page route
