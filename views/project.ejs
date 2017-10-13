@@ -22,6 +22,7 @@
   <!-- HERO SECTION END -->
   <!-- SECTION START -->
   <br><br>
+  <h1><%= log %></h1>
   <div class="container">
     <table class="table is-fullwidth">
       <thead>
@@ -41,7 +42,7 @@
            <% } else { %>
             <tr>
            <% }%>
-           
+
                 <td><%=showProjects.id%></td>
                 <td><%=showProjects.name%></td>
                 <% if(showProjects.deadline){%>
@@ -55,7 +56,7 @@
                  <% } else { %>
                    <td><a href="project/task/<%=showProjects.id%>">Assign Task</a></td>
                  <% }%>
-                
+
                 <td><a href="project/edit/<%=showProjects.id%>">Edit</a></td>
                 <td><a href="project/delete/<%=showProjects.id%>">Delete</a></td>
               </tr>
